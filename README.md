@@ -16,3 +16,15 @@
 
         
         说明，这里连接redis只是测试了单台redis服务器，至于多台redis服务器集群以及一致性hash集群算法，这里没有做详细的测试
+### 添加redis管理分布式session状态
+	1.需要添加相关依赖包
+	<dependency>
+        <groupId>org.springframework.session</groupId>
+        <artifactId>spring-session-data-redis</artifactId>
+    </dependency>
+    2.注册RedisSession到Springboot中RedisSessionConfig.java
+    @Configuration
+	@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60) //1分钟失效
+	public class RedisSessionConfig {
+	}
+    
